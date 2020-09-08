@@ -1,0 +1,117 @@
+.modal-wrap {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 500ms;
+    z-index: 9;
+    
+    &--active {
+        opacity: 1;
+        pointer-events: auto;
+
+        // .modal {
+        //     transform: translate(0, 0);
+        // }
+    }
+
+    &--wide {
+        .modal {
+            width: 90vw;
+            height: 90vh;
+        }
+    }
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    // backdrop-filter: blur(18px);
+}
+
+.modal {
+    position: absolute;
+    min-width: 300px;
+    min-height: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 20px 0 rgba(#000, .5);
+    // transform: translate(0, -10%);
+    transition: transform 300ms;
+
+    &__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 20px;
+        height: 20px;
+        transition: transform 300ms;
+        cursor: pointer;
+        z-index: 9;
+          
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+            transition: transform 300ms;
+        }
+          
+        &::before {
+            top: 0;
+            transform: translate(0, 8.5px) rotate(45deg);
+        }
+          
+        &::after {
+            bottom: 0;
+            transform: translate(0, -10.5px) rotate(-45deg);
+        }
+
+        &:hover {
+            transform: rotate(180deg);
+        }
+
+        @media only screen and (max-width: 320px) {
+            top: 10px;
+            right: 10px;
+        }
+    }
+
+    &__content {
+        height: 100%;
+    }
+
+    .lazy-load-image-background {
+        display: flex !important;
+        height: calc(100% - 140px);
+        padding: 20px;
+        justify-content: center;
+        overflow: hidden;
+
+        @media only screen and (max-width: 768px) {
+            align-items: center;
+            padding: 0;
+        }
+    }
+    
+    img {
+        object-fit: scale-down;
+        
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

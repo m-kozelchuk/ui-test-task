@@ -1,0 +1,55 @@
+@import '../../assets/core.styles';
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 140px;
+    padding: 20px;
+
+    &__avatar {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - 110px);
+        color: #000;
+    }
+
+    &__username {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    
+    &__name {
+        font-size: 14px;
+        color: rgba(#000, 0.6);
+    }
+    
+    &__location {
+        font-size: 12px;
+        font-style: italic;
+        color: rgba(#000, 0.5);
+    }
+
+    &__bio {
+        padding-top: 5px;
+        color: rgba(#000, 0.8);
+        font-size: 14px;
+
+        @media only screen and (max-width: 480px) {
+            @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3, $bgColor: white);
+        }
+    }
+}

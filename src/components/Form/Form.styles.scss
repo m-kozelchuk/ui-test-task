@@ -1,0 +1,114 @@
+.form-wrap {
+    padding: 20px;
+}
+
+.form {
+    position: relative;
+    min-width: 400px;
+    $root: &;
+
+    @media only screen and (max-width: 480px) {
+        min-width: 240px;
+    }
+
+    &__input-container {
+        position: relative;
+        display: block;
+        margin: 16px 0 0;
+    }
+
+    &__input {
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 16px 0 0;
+        border-bottom: 1px solid #D5D9E0;
+        font-size: 18px;
+        line-height: 40px;
+        color: #000;
+
+        &:-internal-autofill-selected {
+            box-shadow: inset 0 0 0 200px #FFF;
+        }
+
+        &--date {
+            padding-top: 8px;
+        }
+
+        &--color {
+            margin-top: 16px;
+            padding: 0;
+
+            &:focus {
+                outline: -webkit-focus-ring-color auto 1px;
+            }
+        }
+        
+        &--range {
+            margin-top: 16px;
+            padding: 0;
+            
+            &:focus {
+                outline: -webkit-focus-ring-color auto 1px;
+            }
+        }
+    }
+
+    &__label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        line-height: 24px;
+        color: #7D8387;
+        transform: translate(0, 24px);
+        transition: transform 300ms, font-size 300ms;
+        pointer-events: none;
+
+        #{$root}__input:focus + &, #{$root}__input--filled + & {
+            transform: translate(0, 0);
+            font-size: 14px;
+            line-height: 16px;
+
+            @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+                transform: translate(0, -12px);
+            }
+        }
+
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            transform: translate(0, 10px);
+        }
+    }
+
+    &__btn {
+        display: flex;
+        margin: 40px auto 0;
+        padding: 8px 32px;
+        border-width: 1px;
+        background-color: #EEE;
+        transition: background-color 300ms;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: #CCC;
+        }
+    }
+
+    &__error {
+        font-size: 12px;
+        line-height: 16px;
+        color: #E53935;
+        position: absolute;
+        bottom: -16px;
+        left: 0;
+
+        & ~ #{$root}__input {
+            border-bottom-color: #E53935;
+        }
+
+        &--invalid {
+            position: absolute;
+            bottom: 64px;
+        }
+    }
+}

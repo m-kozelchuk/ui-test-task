@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+}
+
+.btn--form {
+    display: block;
+    width: 200px;
+    height: 40px;
+    margin: 40px 20px;
+    border-width: 1px;
+    background-color: #EEE;
+    transition: background-color 300ms;
+    cursor: pointer;
+}
+
+.btn--form:hover {
+    background-color: #CCC;
+}
+
+@media only screen and (max-width: 480px) {
+    .btn--form {
+        margin: 40px auto;
+    }
+}
